@@ -53,15 +53,13 @@ function Hero() {
         <p className= {styles.description}>
         Simplifying complex problems through user-centric solutions.
         </p>
-        <a href={CV} download>
-          <button className="hover">Resume</button>
-        </a>
       </div>
     </section>
   );
 }
 
 export default Hero;
+
 
 
 
