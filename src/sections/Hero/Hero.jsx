@@ -40,7 +40,7 @@ function Hero() {
         <h2>
           Recently Graduated with Bachelor's of Computer Science at UTSA,
           <br />
-          Previous Full-Stack Software Engineer Intern
+          Previous Full-Stack Engineer Intern
         </h2>
         <span>
           <a href="https://github.com/Damienb123" target="_blank">
@@ -59,6 +59,7 @@ function Hero() {
 }
 
 export default Hero;
+
 
 
 
