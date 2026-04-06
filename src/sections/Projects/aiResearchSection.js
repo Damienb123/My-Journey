@@ -2,7 +2,7 @@
  * AI Research section — fill in the strings and bullet lists below.
  * Empty bullet arrays hide that card. Keep lines as short paragraphs or single lines.
  */
-export const aiResearchTemplate = {
+export const aiResearchSection = {
   /** Main heading above the section */
   sectionTitle: 'AI Research',
 
