@@ -1,71 +1,109 @@
+import { motion } from 'framer-motion';
 import styles from './SkillsStyles.module.css';
-import checkMarkIconDark from '../../assets/checkmark-dark.svg';
-import checkMarkIconLight from '../../assets/checkmark-light.svg';
-import SkillList from '../../common/SkillList';
-import { useTheme } from '../../common/ThemeContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact } from '@fortawesome/free-brands-svg-icons';
-import { faAngular } from '@fortawesome/free-brands-svg-icons'; 
-import { faHtml5 } from '@fortawesome/free-brands-svg-icons';
-import { faCss3Alt } from '@fortawesome/free-brands-svg-icons';
-import { faJs } from '@fortawesome/free-brands-svg-icons';
-import { faNodeJs } from '@fortawesome/free-brands-svg-icons';
-import { faJava } from '@fortawesome/free-brands-svg-icons';
-import { faPython } from '@fortawesome/free-brands-svg-icons';
-import { faDatabase } from '@fortawesome/free-solid-svg-icons';
-import { faServer } from '@fortawesome/free-solid-svg-icons';
-import { faJira } from '@fortawesome/free-brands-svg-icons';
-import { faNotion } from '@fortawesome/free-brands-svg-icons';
-import { faFigma } from '@fortawesome/free-brands-svg-icons';
+
+const SKILL_GROUPS = [
+  {
+    title: 'Design',
+    items: [
+      'Design Strategy',
+      'Service Design',
+      'Design System',
+      'User Research',
+      'UX Design',
+      'UI Design',
+      'Motion & Interactions',
+    ],
+  },
+  {
+    title: 'Frontend',
+    items: [
+      'HTML',
+      'CSS',
+      'JavaScript',
+      'React',
+      'Angular',
+      'Vite',
+      'Tailwind CSS',
+      'Framer Motion',
+    ],
+  },
+  {
+    title: 'Backend & Tools',
+    items: [
+      'Node.js',
+      'Express',
+      'Python',
+      'MySQL',
+      'Git',
+      'Jira',
+      'Notion',
+      'Figma',
+      'MCP Server',
+      'OpenAI API',
+      'Cursor',
+    ],
+  },
+];
 
 function Skills() {
-  const { theme } = useTheme();
-  const checkMarkIcon = theme === 'light' ? checkMarkIconLight : checkMarkIconDark;
-
   return (
-    <section id="skills" className={styles.container}>
+    <motion.section
+      id="skills"
+      className={styles.container}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    >
       <h1 className="sectionTitle">Skills</h1>
-      
-       <div className={styles.skillsGrid}>
 
-    {/* Frontend */}
-    <div className={styles.skillCategory}>
-      <h2>Frontend</h2>
-      <div className={styles.skillList}>
-        <FontAwesomeIcon icon={faHtml5} size="4x" style={{ color: "#f50000" }} />
-        <FontAwesomeIcon icon={faCss3Alt} size="4x" style={{ color: "#74C0FC" }} />
-        <FontAwesomeIcon icon={faJs} size="4x" style={{ color: "#FFD43B" }} />
-        <FontAwesomeIcon icon={faReact} size="4x" style={{ color: "#74C0FC" }} />
-        <FontAwesomeIcon icon={faAngular} size="4x" style={{ color: "#ff0033" }} />
+      <div className={styles.skillsGrid}>
+        {SKILL_GROUPS.map((group, groupIndex) => (
+          <motion.div
+            key={group.title}
+            className={styles.skillCategory}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-32px' }}
+            transition={{
+              duration: 0.45,
+              delay: groupIndex * 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <h2>{group.title}</h2>
+            <motion.div
+              className={styles.chips}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-32px' }}
+              variants={{
+                hidden: { opacity: 0 },
+                show: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.035, delayChildren: 0.04 },
+                },
+              }}
+            >
+              {group.items.map((label) => (
+                <motion.span
+                  key={label}
+                  className={styles.chip}
+                  variants={{
+                    hidden: { opacity: 0, y: 10 },
+                    show: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {label}
+                </motion.span>
+              ))}
+            </motion.div>
+          </motion.div>
+        ))}
       </div>
-    </div>
-
-    {/* Backend */}
-    <div className={styles.skillCategory}>
-      <h2>Backend</h2>
-      <div className={styles.skillList}>
-        <FontAwesomeIcon icon={faNodeJs} size="4x" style={{ color: "#00ff62" }} />
-        <FontAwesomeIcon icon={faJava} size="4x" style={{ color: "#74C0FC" }} />
-        <FontAwesomeIcon icon={faPython} size="4x" style={{ color: "#FFD43B" }} />
-        <FontAwesomeIcon icon={faDatabase} size="4x" style={{ color: "#74C0FC" }} />
-        <FontAwesomeIcon icon={faServer} size="4x" style={{ color: "#B197FC" }} />
-      </div>
-    </div>
-
-    {/* Tools */}
-    <div className={styles.skillCategory}>
-      <h2>Tools</h2>
-      <div className={styles.skillList}>
-        <FontAwesomeIcon icon={faJira} size="4x" style={{ color: "#74C0FC" }} />
-        <FontAwesomeIcon icon={faNotion} size="4x" style={{ color: "#0400ff" }} />
-        <FontAwesomeIcon icon={faFigma} size="4x" style={{ color: "#ae00ff" }} />
-      </div>
-    </div>
-
-  </div>
-    </section>
+    </motion.section>
   );
 }
 
 export default Skills;
-
