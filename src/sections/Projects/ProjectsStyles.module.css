@@ -2,59 +2,41 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-
-  img {
-    max-width: 280px;
-    max-height: 280px;
-    align-self: center;
-    background-color: var(--project-card-bg);
-    border-radius: 20px;
-    height: 13rem;
-  }
-
-  a {
-    width: fit-content;
-    text-decoration: none;
-    color: #222;
-    transition: transform 200ms ease-in-out;
-  }
-
-  a:hover {
-    transform: scale(1.05);
-  }
 }
+
 .ux-button {
   margin-top: 10px;
   display: flex;
-  justify-content: center;      /* Center vertically within the page */
-  align-items: center;          /* Center horizontally */
-  height: 100vh;                /* Full screen height */
-  width: 100%;                 /* Full width */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
   gap: 4rem;
 }
 
 button {
-    margin: 13px;
-    background-color: var(--btn-color);
-    color: var(--btn-text-color);
-    border-radius: 20px;
-    width: 190px;
-    height: 70px;
-    font-size: 20px;
-    font-weight: bold;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
-  }
+  margin: 13px;
+  background-color: var(--btn-color);
+  color: var(--btn-text-color);
+  border-radius: 20px;
+  width: 190px;
+  height: 70px;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  transition:
+    box-shadow 200ms ease-in-out,
+    transform 200ms ease-in-out;
+}
 
-  button:hover {
-    transform: scale(1.05);
-  }
+button:hover {
+  transform: scale(1.05);
+}
 
-  button:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
-  }
-
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
 
 .courseListContainer {
   background-color: var(--course-card-bg);
@@ -92,10 +74,8 @@ button {
   font-family: 'Roboto Mono', monospace;
 }
 
-/* Light/Dark support */
 .light .courseListContainer {
   background-color: #f9f9f9;
-  
 }
 
 .dark .courseListContainer {
@@ -120,75 +100,35 @@ button {
   color: #fff;
 }
 
+.projectsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 0 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.comingSoon {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+}
+
 @media (width >= 800px) {
   .projectsContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 0 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-   
-  }
-
-  .projectCard {
-    background-color: var(--project-card-bg); /* optional */
-    border-radius: 16px;
-    padding: 1rem;
-    transition: transform 0.3s ease-in-out;
-   
-  }
-
-  .projectCard:hover {
-    transform: scale(1.05);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+    padding: 0 24px;
   }
 }
 
 @media (width >= 1024px) {
   .projectsContainer {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     padding: 0 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-  
-  }
-
-  .projectCard {
-    background-color: var(--project-card-bg); /* optional */
-    border-radius: 16px;
-    padding: 1rem;
-    transition: transform 0.3s ease-in-out;
-   
-  }
-
-  .projectCard:hover {
-    transform: scale(1.05);
-  }
-}
-
-@media (width >= 1440px) {
-  .projectsContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 0 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-    
-  }
-
-  .projectCard {
-    background-color: var(--project-card-bg); /* optional */
-    border-radius: 16px;
-    padding: 1rem;
-    transition: transform 0.3s ease-in-out;
-   
-  }
-
-  .projectCard:hover {
-    transform: scale(1.05);
   }
 }
 
@@ -202,14 +142,10 @@ button {
   font-family: 'Manrope', sans-serif;
 }
 
-/* Light mode */
 .light .description {
-  color: #333333; /* Dark text for light background */
+  color: #333333;
 }
 
-/* Dark mode */
 .dark .description {
-  color: #ffffff; /* Light text for dark background */
+  color: #ffffff;
 }
-
-
